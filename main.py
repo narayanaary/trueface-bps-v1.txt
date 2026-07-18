@@ -29,4 +29,14 @@ async def verify(file: UploadFile, key: str = Form(...)):
         # INSERT MODEL LOGIC HERE
         return {"code": "BPS_200", "status": "Success", "file": file.filename}
     except:
-        raise HTTPException(status_code=500, detail={"code": "BPS_500", "msg": "Engine Fault"})
+        raise HTTPException(status_code=500, detail={"code": "BPS_500", "msg": "Engine Fault"
+from fastapi.middleware.cors import CORSMiddleware
+
+# Add this right after app = FastAPI()
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Allows your GitHub Pages UI to talk to Render
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+})
